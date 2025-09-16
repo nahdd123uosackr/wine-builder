@@ -36,7 +36,7 @@ RUN \
     gst-plugin-pipewire pipewire-alsa pipewire-audio pipewire-docs pipewire-ffado pipewire-jack pipewire-libcamera pipewire-pulse pipewire-roc pipewire-session-manager pipewire-v4l2 pipewire-x11-bell pipewire-zeroconf rtkit \
     libwmf libopenraw libjxl librsvg webp-pixbuf-loader evince vulkan-mesa-layers openmp opencl-headers \
     #--- 추가된 선택적 종속성 (32-bit) ---
-    lib32-alsa-plugins lib32-pipewire-jack lib32-pipewire-v4l2 lib32-vulkan-mesa-layers  lib32-pipewire lib32-libdecor lib32-vulkan-radeon lib32-vulkan-intel lib32-opencl-driver && \
+    lib32-alsa-plugins lib32-pipewire-jack lib32-pipewire-v4l2 lib32-vulkan-mesa-layers  lib32-pipewire lib32-libdecor lib32-vulkan-radeon lib32-vulkan-intel lib32-opencl-driver ipp-usb gst-plugin-libcamera libcamera-tools libfido2 libavtp lib32-libavtp lib32-libpulse lib32-speexdsp && \
     \
     # 5. 이미지 용량 최적화를 위해 패키지 캐시 정리
     pacman -Scc --noconfirm
