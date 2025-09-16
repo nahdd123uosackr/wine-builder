@@ -31,7 +31,7 @@ RUN \
     #--- 32-bit 선택적 종속성 (공식 저장소) ---
     lib32-zlib lib32-libcups lib32-krb5 lib32-ocl-icd lib32-libpcap lib32-libusb \
     #--- 요청에 따라 추가된 32-bit 선택적 종속성 ---
-    opengl-man-pages lib32-jack lib32-pipewire lib32-libdecor lib32-vulkan-radeon lib32-vulkan-intel lib32-opencl-rusticl && \
+    opengl-man-pages lib32-jack lib32-pipewire lib32-libdecor lib32-vulkan-radeon lib32-vulkan-intel lib32-opencl-driver && \
     \
     # 5. 이미지 용량 최적화를 위해 패키지 캐시 정리
     pacman -Scc --noconfirm
