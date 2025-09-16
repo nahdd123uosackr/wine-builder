@@ -6,7 +6,9 @@ ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
 # 시스템 업데이트 및 기본 유틸리티 설치 (sudo, curl 등)
-RUN pacman -Syu --noconfirm && pacman -S --noconfirm sudo curl
+# RUN 명령어를 하나로 합쳐 Docker 레이어 수를 줄임
+RUN pacman -Syu --noconfirm && \
+    pacman -S --noconfirm --needed sudo curl
 
 # 32-bit 아키텍처 (multilib 저장소) 활성화
 RUN sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf && \
@@ -23,7 +25,6 @@ USER $USERNAME
 WORKDIR /home/$USERNAME
 
 # Wine 빌드에 필요한 모든 종속성 설치
-# RUN 명령을 하나로 합쳐 Docker 레이어 수를 줄임
 RUN sudo pacman -S --noconfirm --needed \
     # 코어 시스템 패키지
     ca-certificates \
@@ -53,7 +54,7 @@ RUN sudo pacman -S --noconfirm --needed \
     gst-plugins-base \
     sdl2 \
     systemd-libs \
-    vulkan-headers \
+    vulkan-icd-loader \
     # 64-bit 선택적 종속성
     libcups \
     libgphoto2 \
@@ -87,7 +88,7 @@ RUN sudo pacman -S --noconfirm --needed \
     lib32-gst-plugins-base \
     lib32-sdl2 \
     lib32-systemd \
-    lib32-vulkan-headers \
+    lib32-vulkan-icd-loader \
     # 32-bit 선택적 종속성 (lib32-*)
     lib32-libcups \
     lib32-libgphoto2 \
@@ -98,9 +99,9 @@ RUN sudo pacman -S --noconfirm --needed \
     lib32-libusb \
     lib32-v4l-utils \
     # Wine 빌드에 필요한 추가 패키지
-    flex \
-    bison \
-    lib32-zlib
+    lib32-zlib && \
+    # 패키지 캐시 정리로 이미지 크기 최적화
+    sudo pacman -Scc --noconfirm
 
 # 빌드 스크립트 복사 및 권한 설정
 COPY --chown=$USER_UID:$USER_GID build-wine.sh /build-wine.sh
