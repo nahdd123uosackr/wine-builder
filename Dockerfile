@@ -1,4 +1,4 @@
-Dockerfile# Arch Linux 기반의 Wine 빌드 환경
+# Arch Linux 기반의 Wine 빌드 환경
 FROM archlinux:latest
 
 ARG USERNAME=wine-builder
