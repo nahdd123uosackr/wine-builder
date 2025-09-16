@@ -2,7 +2,7 @@
 
 # 사용 가능한 CPU 코어 수를 가져와 빌드 스레드 수로 설정 (기본값: nproc 결과)
 
-pacman -Syu --noconfirm 
+yay -Syu --noconfirm 
 
 BUILD_THREADS="${BUILD_THREADS:-$(nproc)}"
 
