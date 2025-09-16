@@ -11,10 +11,10 @@ RUN \
     pacman -Syu --noconfirm && \
     pacman -S --noconfirm --needed sudo curl && \
     \
-    # 2. 32-bit 아키텍처 (multilib 저장소) 활성화
-    sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf && \
+    # 2. sed 대신 echo를 사용하여 multilib 저장소 설정 추가 (더 안정적인 방법)
+    echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
     \
-    # 3. multilib 활성화 후 데이터베이스 강제 재동기화
+    # 3. multilib 활성화 후 데이터베이스 강제 재동기화 (이제 multilib.db가 보여야 함)
     pacman -Syu --noconfirm && \
     \
     # 4. 빌드에 필요한 모든 종속성 설치
@@ -25,7 +25,7 @@ RUN \
     libcups libgphoto2 sane krb5 samba ocl-icd libpcap libusb v4l-utils \
     lib32-gcc-libs lib32-alsa-lib lib32-libpulse lib32-dbus lib32-fontconfig lib32-freetype2 lib32-gnutls lib32-mesa lib32-libunwind lib32-libx11 lib32-libxcomposite lib32-libxcursor lib32-libxfixes lib32-libxi lib32-libxrandr lib32-libxrender lib32-libxext \
     lib32-gstreamer lib32-gst-plugins-base lib32-sdl2 lib32-systemd \
-    lib32-zlib lib32-libcups lib32-libgphoto2 lib32-sane lib32-krb5 lib32-ocl-icd lib32-libpcap lib32-libusb v4l-utils && \
+    lib32-zlib lib32-libcups lib32-libgphoto2 lib32-sane lib32-krb5 lib32-ocl-icd lib32-libpcap lib32-libusb && \
     \
     # 5. 이미지 용량 최적화를 위해 패키지 캐시 정리
     pacman -Scc --noconfirm
