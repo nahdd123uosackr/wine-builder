@@ -32,7 +32,7 @@ RUN \
     lib32-zlib lib32-libcups lib32-krb5 lib32-ocl-icd lib32-libpcap lib32-libusb \
     #--- 추가된 선택적 종속성 (64-bit) ---
     opengl-man-pages rrdtool sndio nss-mdns python-dbus python-gobject python-twisted libwebp-utils ffmpeg qt5-base sdl \
-    qt6-base qt6-5compat freeglut poppler-data sane-airscan a2jmidid libffado jack-example-tools jack2-dbus jack2-docs realtime-privileges \
+    qt6-base qt6-5compat freeglut poppler-data sane-airscan a2jmidid libffado jack-example-tools realtime-privileges \
     gst-plugin-pipewire pipewire-alsa pipewire-audio pipewire-docs pipewire-ffado pipewire-jack pipewire-libcamera pipewire-pulse pipewire-roc pipewire-session-manager pipewire-v4l2 pipewire-x11-bell pipewire-zeroconf rtkit \
     libwmf libopenraw libjxl librsvg webp-pixbuf-loader evince vulkan-mesa-layers openmp opencl-headers \
     #--- 추가된 선택적 종속성 (32-bit) ---
