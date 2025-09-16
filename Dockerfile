@@ -27,14 +27,14 @@ USER $USERNAME
 WORKDIR /home/$USERNAME
 
 # Wine 빌드에 필요한 모든 종속성 설치
+# 일부 선택적 lib32 패키지는 multilib 저장소에 존재하지 않아 제거됨
 RUN sudo pacman -S --noconfirm --needed \
     ca-certificates gnupg \
     gcc-multilib mingw-w64-gcc alsa-lib libpulse dbus fontconfig freetype2 gnutls mesa libunwind libx11 libxcomposite libxcursor libxfixes libxi libxrandr libxrender libxext \
     gstreamer gst-plugins-base sdl2 systemd vulkan-icd-loader \
     libcups libgphoto2 sane krb5 samba ocl-icd libpcap libusb v4l-utils \
     lib32-gcc-libs lib32-alsa-lib lib32-libpulse lib32-dbus lib32-fontconfig lib32-freetype2 lib32-gnutls lib32-mesa lib32-libunwind lib32-libx11 lib32-libxcomposite lib32-libxcursor lib32-libxfixes lib32-libxi lib32-libxrandr lib32-libxrender lib32-libxext \
-    lib32-gstreamer lib32-gst-plugins-base lib32-sdl2 lib32-systemd lib32-vulkan-icd-loader \
-    lib32-libcups lib32-libgphoto2 lib32-sane lib32-krb5 lib32-ocl-icd lib32-libpcap lib32-libusb lib32-v4l-utils \
+    lib32-gstreamer lib32-gst-plugins-base lib32-sdl2 lib32-systemd \
     lib32-zlib \
     && sudo pacman -Scc --noconfirm
 
