@@ -7,7 +7,7 @@ This is a fairly generic archlinux base winebuilder. It should be able to build 
 To download the image just run the following command:
 
 ```sh
-podman pull ghcr.io/daegalus/wine-builder
+podman pull ghcr.io/nahdd123uosackr/wine-builder
 ```
 
 ## Building
